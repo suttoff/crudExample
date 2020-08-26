@@ -65,16 +65,12 @@ public class PlayerService {
             allRows = Try.of(() -> fixedWidthParser.parseAll(file.getInputStream()))
                     .onFailure(Exception::new)
                     .get();
-            listAllRows(allRows, list);
+            list.add(allRows);
         }
 
         if (allRows != null) {
             allRows.stream().map(line -> repository.save(buildPlayer(line))).collect(Collectors.toList());
         }
-        return buildResponseArchive();
-    }
-
-    private String buildResponseArchive() {
         return "Player successfully included by archive.";
     }
 
@@ -89,10 +85,5 @@ public class PlayerService {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         return bufferedReader.readLine();
     }
-
-    private void listAllRows(List<String[]> allRows, List<List<String[]>> list) {
-        list.add(allRows);
-    }
-
 
 }
