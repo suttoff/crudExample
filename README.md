@@ -9,11 +9,13 @@ Run following commands to create mongoDb wth replicaSet:
 - docker run -d -p 27017-27019:27017-27019 --name mongodb mongo:4.0.4
 
 ## Useful Link
-Import file archive.postman_collecton.json to your Postman for valid requests
-
+Import file Archive.postman_collecton.json to your Postman for valid requests
 ```
-MongoDb configuration example link:
+MongoDB configuration example link:
 https://www.thepolyglotdeveloper.com/2019/01/getting-started-mongodb-docker-container-deployment/
+
+MongoDB access tool:
+https://robomongo.org/
 ```
 
 
