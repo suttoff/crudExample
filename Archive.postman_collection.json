@@ -6,134 +6,189 @@
 	},
 	"item": [
 		{
-			"name": "Get Player",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{local}}/player",
-					"host": [
-						"{{local}}"
-					],
-					"path": [
-						"player"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create Player",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"name\": \"Felipe\",\n    \"age\": 23\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Player",
+			"item": [
+				{
+					"name": "Get Player",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/player",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"player"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/player",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"player"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Player",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{local}}/player/:name",
-					"host": [
-						"{{local}}"
-					],
-					"path": [
-						"player",
-						":name"
-					],
-					"variable": [
-						{
-							"key": "name",
-							"value": "Marila"
+				{
+					"name": "Create Player",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Felipe\",\n    \"age\": 23\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/player",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"player"
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Player",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"age\": 22\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{local}}/player/:name",
-					"host": [
-						"{{local}}"
-					],
-					"path": [
-						"player",
-						":name"
-					],
-					"variable": [
-						{
-							"key": "name",
-							"value": "Matheus"
+				{
+					"name": "Delete Player",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/player/:name",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"player",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "Marila"
+								}
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "Update Player",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"age\": 22\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/player/:name",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"player",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "Matheus"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Archive To Create Player",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/matheus_suttoff/projetosPessoais/arquivos/CreatePlayer.txt"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{local}}/player/archive",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"player",
+								"archive"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "Send Archive To Create Player",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "file",
-							"type": "file",
-							"src": "/home/matheus_suttoff/projetosPessoais/arquivos/CreatePlayer.txt"
+			"name": "Team",
+			"item": [
+				{
+					"name": "Create Team",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Fusion Team Gaming\",\n    \"tag\": \"FTG\",\n    \"statusType\": \"Active\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/team",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"team"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{local}}/player/archive",
-					"host": [
-						"{{local}}"
-					],
-					"path": [
-						"player",
-						"archive"
-					]
+				{
+					"name": "Get Team",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/team",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"team"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"protocolProfileBehavior": {}

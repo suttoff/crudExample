@@ -12,8 +12,10 @@ import java.util.List;
 public class TeamService {
 
     private final TeamRepository repository;
+    private final SequenceGeneratorService serviceId;
 
     public String create(Team team) {
+        team.setId(serviceId.generateSequence(Team.SEQUENCE_NAME));
         this.repository.save(team);
         return "Team successfully included.";
     }

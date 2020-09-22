@@ -32,6 +32,7 @@ public class PlayerService {
     private final FixedWidthParser fixedWidthParser;
     private final PlayerRepository repository;
     private final PlayerDAO playerDAO;
+    private final SequenceGeneratorService serviceId;
 
 
     public List<Player> get() {
@@ -39,6 +40,7 @@ public class PlayerService {
     }
 
     public String create(Player player) {
+        player.setId(serviceId.generateSequence(Player.SEQUENCE_NAME));
         this.repository.save(player);
         return "Player successfully included.";
     }
