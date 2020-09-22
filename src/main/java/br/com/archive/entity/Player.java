@@ -1,7 +1,6 @@
 package br.com.archive.entity;
 
 import lombok.Data;
-import lombok.Generated;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;

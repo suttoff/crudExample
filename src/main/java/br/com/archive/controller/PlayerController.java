@@ -3,11 +3,14 @@ package br.com.archive.controller;
 import br.com.archive.entity.Player;
 import br.com.archive.service.PlayerService;
 import org.springframework.http.HttpStatus;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.websocket.server.PathParam;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @RestController()
 @RequestMapping("/player")
@@ -20,8 +23,8 @@ public class PlayerController {
     }
 
     @GetMapping
-    public List<Player> get() {
-        return this.service.get();
+    public List<Player> get(@RequestParam(required = false) String id) {
+        return this.service.get(id);
     }
 
     @PostMapping
@@ -30,16 +33,16 @@ public class PlayerController {
         return this.service.create(player);
     }
 
-    @PutMapping("/{name}")
+    @PutMapping("/{id}")
     public String updateAge(@RequestBody Player player,
-                            @PathVariable String name) {
-        return this.service.updateAge(name, player);
+                            @PathVariable String id) {
+        return this.service.updateAge(id, player);
     }
 
-    @DeleteMapping("/{name}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void delete(@PathVariable String name) {
-        this.service.delete(name);
+    public void delete(@PathVariable String id) {
+        this.service.delete(id);
     }
 
     @PostMapping("/archive")

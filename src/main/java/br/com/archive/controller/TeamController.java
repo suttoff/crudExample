@@ -26,10 +26,8 @@ public class TeamController {
        return this.service.create(team);
     }
 
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<Team> get() {
-        return this.service.get();
+    @GetMapping()
+    public List<Team> get(@RequestParam(required = false) String id) {
+        return this.service.get(id);
     }
-
 }

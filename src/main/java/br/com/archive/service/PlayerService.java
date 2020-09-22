@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
@@ -17,6 +18,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,8 +37,18 @@ public class PlayerService {
     private final SequenceGeneratorService serviceId;
 
 
-    public List<Player> get() {
-        return this.repository.findAll();
+    public List<Player> get(String id) {
+        if (StringUtils.isEmpty(id)) {
+            return this.repository.findAll();
+        } else {
+            List<Player> players = new ArrayList<>();
+            players.add(this.repository.findById(Long.valueOf(id)).orElse(new Player()));
+
+            if (players.get(0).getId() == 0) {
+                players.clear();
+            }
+            return players;
+        }
     }
 
     public String create(Player player) {
@@ -45,12 +57,12 @@ public class PlayerService {
         return "Player successfully included.";
     }
 
-    public String updateAge(String name, Player player) {
-        return this.playerDAO.updateAge(name, player);
+    public String updateAge(String id, Player player) {
+        return this.playerDAO.updateAge(Long.valueOf(id), player);
     }
 
-    public void delete(String name) {
-        this.repository.deleteByName(name);
+    public void delete(String id) {
+        this.repository.deleteById(Long.valueOf(id));
     }
 
     public String receivedArchiveToCreate(MultipartFile file) throws IOException {

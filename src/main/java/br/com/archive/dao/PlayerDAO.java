@@ -16,9 +16,9 @@ public class PlayerDAO {
 
     private final MongoOperations mongoOperation;
 
-    public String updateAge(String name, Player player) {
+    public String updateAge(Long id, Player player) {
         Query query = new Query();
-        query.addCriteria(Criteria.where("name").is(name));
+        query.addCriteria(Criteria.where("id").is(id));
 
         Player playerUpdate = mongoOperation.findOne(query, Player.class);
         if (!Objects.isNull(playerUpdate)) {

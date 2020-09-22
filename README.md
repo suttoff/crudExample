@@ -1,5 +1,20 @@
 # Archive
 
+# About 
+Online Championships Management API Project
+
+    Contains the apis below
+        Player:
+            - Get player
+            - Add player
+            - Update player
+            - Delete player
+            - Archive to create player
+            
+        Team:
+            - Get Team
+            - Add Team
+
 ## Create mongoDB environment    
     
 Run following commands to create mongoDb wth replicaSet: 

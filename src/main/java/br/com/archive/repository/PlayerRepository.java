@@ -8,5 +8,4 @@ import java.util.List;
 public interface PlayerRepository extends MongoRepository<Player, Long> {
 
     List<Player> findAll();
-    void deleteByName(String name);
 }
