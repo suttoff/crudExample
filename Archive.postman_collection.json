@@ -14,12 +14,18 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{local}}/player",
+							"raw": "{{local}}/player?id=",
 							"host": [
 								"{{local}}"
 							],
 							"path": [
 								"player"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -59,18 +65,18 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{local}}/player/:name",
+							"raw": "{{local}}/player/:id",
 							"host": [
 								"{{local}}"
 							],
 							"path": [
 								"player",
-								":name"
+								":id"
 							],
 							"variable": [
 								{
-									"key": "name",
-									"value": "Marila"
+									"key": "id",
+									"value": "3"
 								}
 							]
 						}
@@ -92,18 +98,18 @@
 							}
 						},
 						"url": {
-							"raw": "{{local}}/player/:name",
+							"raw": "{{local}}/player/:id",
 							"host": [
 								"{{local}}"
 							],
 							"path": [
 								"player",
-								":name"
+								":id"
 							],
 							"variable": [
 								{
-									"key": "name",
-									"value": "Matheus"
+									"key": "id",
+									"value": "1"
 								}
 							]
 						}
@@ -174,14 +180,27 @@
 					"name": "Get Team",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"url": {
-							"raw": "{{local}}/team",
+							"raw": "{{local}}/team?id=",
 							"host": [
 								"{{local}}"
 							],
 							"path": [
 								"team"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": ""
+								}
 							]
 						}
 					},
