@@ -7,6 +7,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import javax.websocket.server.PathParam;
 import java.io.IOException;
 import java.util.List;
@@ -23,7 +24,7 @@ public class PlayerController {
     }
 
     @GetMapping
-    public List<Player> get(@RequestParam(required = false) String id) {
+    public List<Player> get(@RequestParam(required = false) Long id) {
         return this.service.get(id);
     }
 
@@ -35,13 +36,13 @@ public class PlayerController {
 
     @PutMapping("/{id}")
     public String updateAge(@RequestBody Player player,
-                            @PathVariable String id) {
+                            @PathVariable Long id) {
         return this.service.updateAge(id, player);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void delete(@PathVariable String id) {
+    public void delete(@PathVariable Long id) {
         this.service.delete(id);
     }
 

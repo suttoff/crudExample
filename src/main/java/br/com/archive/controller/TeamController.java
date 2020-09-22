@@ -26,8 +26,14 @@ public class TeamController {
        return this.service.create(team);
     }
 
+    @PostMapping("/{idPlayer}/{idTeam}")
+    @ResponseStatus(HttpStatus.OK)
+    public String addMember(@Valid @RequestParam Long idPlayer, Long idTeam) {
+        return this.service.addMember(idPlayer, idTeam);
+    }
+
     @GetMapping()
-    public List<Team> get(@RequestParam(required = false) String id) {
+    public List<Team> get(@RequestParam(required = false) Long id) {
         return this.service.get(id);
     }
 }

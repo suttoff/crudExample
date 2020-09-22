@@ -18,6 +18,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -37,12 +38,12 @@ public class PlayerService {
     private final SequenceGeneratorService serviceId;
 
 
-    public List<Player> get(String id) {
-        if (StringUtils.isEmpty(id)) {
+    public List<Player> get(Long id) {
+        if (Objects.isNull(id)) {
             return this.repository.findAll();
         } else {
             List<Player> players = new ArrayList<>();
-            players.add(this.repository.findById(Long.valueOf(id)).orElse(new Player()));
+            players.add(this.repository.findById(id).orElse(new Player()));
 
             if (players.get(0).getId() == 0) {
                 players.clear();
@@ -57,12 +58,12 @@ public class PlayerService {
         return "Player successfully included.";
     }
 
-    public String updateAge(String id, Player player) {
-        return this.playerDAO.updateAge(Long.valueOf(id), player);
+    public String updateAge(Long id, Player player) {
+        return this.playerDAO.updateAge(id, player);
     }
 
-    public void delete(String id) {
-        this.repository.deleteById(Long.valueOf(id));
+    public void delete(Long id) {
+        this.repository.deleteById(id);
     }
 
     public String receivedArchiveToCreate(MultipartFile file) throws IOException {

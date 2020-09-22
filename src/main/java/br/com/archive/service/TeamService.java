@@ -8,6 +8,7 @@ import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -22,12 +23,16 @@ public class TeamService {
         return "Team successfully included.";
     }
 
-    public List<Team> get(String id) {
-        if (StringUtils.isEmpty(id)) {
+    public String addMember(Long idPlayer, Long idTeam) {
+        return "Player successfully included.";
+    }
+
+    public List<Team> get(Long id) {
+        if (Objects.isNull(id)) {
             return this.repository.findAll();
         } else {
             List<Team> Teams = new ArrayList<>();
-            Teams.add(this.repository.findById(Long.valueOf(id)).orElse(new Team()));
+            Teams.add(this.repository.findById(id).orElse(new Team()));
 
             if (Teams.get(0).getId() == 0) {
                 Teams.clear();
