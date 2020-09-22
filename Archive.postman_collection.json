@@ -14,18 +14,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{local}}/player?id=",
+							"raw": "{{local}}/player",
 							"host": [
 								"{{local}}"
 							],
 							"path": [
 								"player"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": ""
-								}
 							]
 						}
 					},
@@ -38,7 +32,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Felipe\",\n    \"age\": 23\n}",
+							"raw": "{\n    \"name\": \"Matheus\",\n    \"age\": 23\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -65,18 +59,18 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{local}}/player/:id",
+							"raw": "{{local}}/player/:name",
 							"host": [
 								"{{local}}"
 							],
 							"path": [
 								"player",
-								":id"
+								":name"
 							],
 							"variable": [
 								{
-									"key": "id",
-									"value": "3"
+									"key": "name",
+									"value": "Marila"
 								}
 							]
 						}
@@ -98,18 +92,18 @@
 							}
 						},
 						"url": {
-							"raw": "{{local}}/player/:id",
+							"raw": "{{local}}/player/:name",
 							"host": [
 								"{{local}}"
 							],
 							"path": [
 								"player",
-								":id"
+								":name"
 							],
 							"variable": [
 								{
-									"key": "id",
-									"value": "1"
+									"key": "name",
+									"value": "Matheus"
 								}
 							]
 						}
@@ -180,26 +174,43 @@
 					"name": "Get Team",
 					"request": {
 						"method": "GET",
-						"header": [
-							{
-								"key": "",
-								"value": "",
-								"type": "text",
-								"disabled": true
-							}
-						],
+						"header": [],
 						"url": {
-							"raw": "{{local}}/team?id=",
+							"raw": "{{local}}/team",
 							"host": [
 								"{{local}}"
 							],
 							"path": [
 								"team"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add Player to Team",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/team/addMember/:idPlayer/:idTeam",
+							"host": [
+								"{{local}}"
 							],
-							"query": [
+							"path": [
+								"team",
+								"addMember",
+								":idPlayer",
+								":idTeam"
+							],
+							"variable": [
 								{
-									"key": "id",
-									"value": ""
+									"key": "idPlayer",
+									"value": "2"
+								},
+								{
+									"key": "idTeam",
+									"value": "3"
 								}
 							]
 						}
