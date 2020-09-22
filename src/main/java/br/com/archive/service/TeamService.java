@@ -5,6 +5,8 @@ import br.com.archive.repository.TeamRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class TeamService {
@@ -14,6 +16,10 @@ public class TeamService {
     public String create(Team team) {
         this.repository.save(team);
         return "Team successfully included.";
+    }
+
+    public List<Team> get() {
+        return this.repository.findAll();
     }
 
 }
