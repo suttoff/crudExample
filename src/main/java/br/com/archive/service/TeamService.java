@@ -1,10 +1,12 @@
 package br.com.archive.service;
 
+import br.com.archive.dao.TeamDAO;
+import br.com.archive.entity.Player;
 import br.com.archive.entity.Team;
+import br.com.archive.repository.PlayerRepository;
 import br.com.archive.repository.TeamRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,8 @@ import java.util.Objects;
 public class TeamService {
 
     private final TeamRepository repository;
+    private final PlayerRepository playerRepository;
+    private final TeamDAO teamDAO;
     private final SequenceGeneratorService serviceId;
 
     public String create(Team team) {
@@ -24,7 +28,8 @@ public class TeamService {
     }
 
     public String addMember(Long idPlayer, Long idTeam) {
-        return "Player successfully included.";
+        Player player = this.playerRepository.findById(idPlayer).get();
+        return this.teamDAO.addMember(idTeam, player);
     }
 
     public List<Team> get(Long id) {

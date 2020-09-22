@@ -1,9 +1,7 @@
 package br.com.archive.entity;
 
 import br.com.archive.domain.StatusType;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -34,6 +32,6 @@ public class Team {
     //@NotNull(message = "statusType is required")
     private StatusType statusType;
 
-    List<Player> players;
+    private List<Player> players;
 
 }

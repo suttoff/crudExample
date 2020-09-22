@@ -26,9 +26,9 @@ public class TeamController {
        return this.service.create(team);
     }
 
-    @PostMapping("/{idPlayer}/{idTeam}")
-    @ResponseStatus(HttpStatus.OK)
-    public String addMember(@Valid @RequestParam Long idPlayer, Long idTeam) {
+    @PostMapping(path = "/addMember/{idPlayer}/{idTeam}")
+    public String addMember(@PathVariable("idPlayer") Long idPlayer,
+                            @PathVariable("idTeam") Long idTeam) {
         return this.service.addMember(idPlayer, idTeam);
     }
 
