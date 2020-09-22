@@ -64,20 +64,21 @@ public class PlayerService {
             String readLine = getbufferedReaderString(inputStream);
             setLength(readLine.length());
 
-            allRows = Try.of(() -> fixedWidthParser.parseAll(file.getInputStream()))
+            allRows = Try.of(() -> this.fixedWidthParser.parseAll(file.getInputStream()))
                     .onFailure(Exception::new)
                     .get();
             list.add(allRows);
         }
 
         if (allRows != null) {
-            allRows.stream().map(line -> repository.save(buildPlayer(line))).collect(Collectors.toList());
+            allRows.stream().map(line -> this.repository.save(buildPlayer(line))).collect(Collectors.toList());
         }
         return "Player successfully included by archive.";
     }
 
     private Player buildPlayer(String[] line) {
         Player player = new Player();
+        player.setId(serviceId.generateSequence(Player.SEQUENCE_NAME));
         player.setName(line[0]);
         player.setAge(Integer.parseInt(line[1]));
         return player;
