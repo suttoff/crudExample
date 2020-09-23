@@ -23,7 +23,7 @@ public class TeamController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public String create(@Valid @RequestBody Team team) {
-       return this.service.create(team);
+        return this.service.create(team);
     }
 
     @PostMapping(path = "/addMember/{idPlayer}/{idTeam}")

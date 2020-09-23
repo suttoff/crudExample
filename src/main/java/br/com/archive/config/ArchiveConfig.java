@@ -11,7 +11,7 @@ public class ArchiveConfig {
 
     @Bean
     public FixedWidthParser fixedWidthParser() {
-        FixedWidthFields lengths = new FixedWidthFields(10,2);
+        FixedWidthFields lengths = new FixedWidthFields(10, 2);
 
         FixedWidthParserSettings settings = new FixedWidthParserSettings(lengths);
         settings.getFormat().setLineSeparator("\n");
