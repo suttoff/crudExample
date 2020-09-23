@@ -28,9 +28,17 @@ public class TeamService {
     }
 
     public String addMember(Long idPlayer, Long idTeam) {
-        Player player = this.playerRepository.findById(idPlayer).get();
+        Player player = this.playerRepository.findById(idPlayer).orElse(new Player());
+        if (player.getId() == 0) {
+            return "The informed player does not exist";
+        }
         return this.teamDAO.addMember(idTeam, player);
     }
+
+    public void delete(Long id) {
+        this.repository.deleteById(id);
+    }
+
 
     public List<Team> get(Long id) {
         if (Objects.isNull(id)) {

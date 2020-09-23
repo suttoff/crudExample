@@ -36,4 +36,10 @@ public class TeamController {
     public List<Team> get(@RequestParam(required = false) Long id) {
         return this.service.get(id);
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void delete(@PathVariable Long id) {
+        this.service.delete(id);
+    }
 }

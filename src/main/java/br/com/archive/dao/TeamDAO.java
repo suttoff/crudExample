@@ -32,6 +32,11 @@ public class TeamDAO {
                 team.setPlayers(new ArrayList<>());
             }
 
+            boolean haveDuplicate = team.getPlayers().contains(player);
+            if (haveDuplicate) {
+                return "Unable to add, player already belongs to the team";
+            }
+
             team.getPlayers().add(player);
             update.set("players", team.getPlayers());
             this.mongoOperation.updateFirst(query, update, Team.class);
