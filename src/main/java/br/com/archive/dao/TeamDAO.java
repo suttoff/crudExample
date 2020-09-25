@@ -28,7 +28,7 @@ public class TeamDAO {
         Team team = this.mongoOperation.findOne(query, Team.class);
 
         if (!Objects.isNull(team)) {
-            if (Objects.isNull(team.getPlayers()) || team.getPlayers().isEmpty()) {
+            if (Objects.isNull(team.getPlayers())) {
                 team.setPlayers(new ArrayList<>());
             }
 

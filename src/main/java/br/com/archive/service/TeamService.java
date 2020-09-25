@@ -44,13 +44,13 @@ public class TeamService {
         if (Objects.isNull(id)) {
             return this.repository.findAll();
         } else {
-            List<Team> Teams = new ArrayList<>();
-            Teams.add(this.repository.findById(id).orElse(new Team()));
+            List<Team> teams = new ArrayList<>();
+            teams.add(this.repository.findById(id).orElse(new Team()));
 
-            if (Teams.get(0).getId() == 0) {
-                Teams.clear();
+            if (teams.get(0).getId() == 0) {
+                teams.clear();
             }
-            return Teams;
+            return teams;
         }
     }
 
