@@ -26,7 +26,7 @@ Run following commands to create mongoDb wth replicaSet:
 
 ## Useful Link
 - Link to access the Swagger documentation http://localhost:8080/swagger-ui.html#
-- Import file Archive.postman_collecton.json to your Postman for valid requests
+- Import file Archive.postman_collection.json to your Postman for valid requests
 ```
 MongoDB configuration example link:
 https://www.thepolyglotdeveloper.com/2019/01/getting-started-mongodb-docker-container-deployment/
