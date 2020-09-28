@@ -39,7 +39,6 @@ public class TeamService {
         this.repository.deleteById(id);
     }
 
-
     public List<Team> get(Long id) {
         if (Objects.isNull(id)) {
             return this.repository.findAll();

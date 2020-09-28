@@ -2,6 +2,7 @@ package br.com.archive.controller;
 
 import br.com.archive.entity.Player;
 import br.com.archive.service.PlayerService;
+import io.swagger.annotations.Api;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController()
 @RequestMapping("/player")
+@Api(value = "Player")
 public class PlayerController {
 
     private final PlayerService service;
