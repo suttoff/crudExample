@@ -29,11 +29,11 @@ public class TeamService {
     }
 
     public String addMember(Long idPlayer, Long idTeam) {
-        Player player = this.playerRepository.findById(idPlayer).orElse(new Player());
-        if (player.getId() == 0) {
+        Optional<Player> player = this.playerRepository.findById(idPlayer);
+        if (!player.isPresent()) {
             return "The informed player does not exist";
         }
-        return this.teamDAO.addMember(idTeam, player);
+        return this.teamDAO.addMember(idTeam, player.get());
     }
 
     public void delete(Long id) {
@@ -51,5 +51,4 @@ public class TeamService {
             return teams;
         }
     }
-
 }
