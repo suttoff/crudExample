@@ -3,6 +3,7 @@ package br.com.archive.controller;
 import br.com.archive.entity.Player;
 import br.com.archive.service.PlayerService;
 import io.swagger.annotations.Api;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,6 +18,7 @@ public class PlayerController {
 
     private final PlayerService service;
 
+    @Autowired
     public PlayerController(PlayerService service) {
         this.service = service;
     }

@@ -43,11 +43,9 @@ public class PlayerService {
             return this.repository.findAll();
         } else {
             List<Player> players = new ArrayList<>();
-            players.add(this.repository.findById(id).orElse(new Player()));
+            Optional<Player> player = this.repository.findById(id);
 
-            if (players.get(0).getId() == 0) {
-                players.clear();
-            }
+            player.ifPresent(players::add);
             return players;
         }
     }

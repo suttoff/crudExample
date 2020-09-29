@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -44,11 +45,9 @@ public class TeamService {
             return this.repository.findAll();
         } else {
             List<Team> teams = new ArrayList<>();
-            teams.add(this.repository.findById(id).orElse(new Team()));
+            Optional<Team> team = this.repository.findById(id);
 
-            if (teams.get(0).getId() == 0) {
-                teams.clear();
-            }
+            team.ifPresent(teams::add);
             return teams;
         }
     }
