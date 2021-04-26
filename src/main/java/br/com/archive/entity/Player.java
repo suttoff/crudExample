@@ -14,14 +14,10 @@ import javax.validation.constraints.NotNull;
 @Setter
 @Validated
 @NotNull(message = "player is required")
-@Document(collection = "player")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Player {
-
-    @Transient
-    public static final String SEQUENCE_NAME = "player_sequence";
 
     @Id
     private long id;

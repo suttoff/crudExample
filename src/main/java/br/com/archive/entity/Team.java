@@ -13,14 +13,10 @@ import java.util.List;
 @Data
 @Getter
 @Setter
-@Document(collection = "team")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Team {
-
-    @Transient
-    public static final String SEQUENCE_NAME = "team_sequence";
 
     @Id
     private long id;

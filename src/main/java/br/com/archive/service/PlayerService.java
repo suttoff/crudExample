@@ -35,7 +35,6 @@ public class PlayerService {
     private final FixedWidthParser fixedWidthParser;
     private final PlayerRepository repository;
     private final PlayerDAO playerDAO;
-    private final SequenceGeneratorService serviceId;
 
 
     public List<Player> get(long id) {
@@ -51,7 +50,6 @@ public class PlayerService {
     }
 
     public String create(Player player) {
-        player.setId(serviceId.generateSequence(Player.SEQUENCE_NAME));
         this.repository.save(player);
         return "Player successfully included.";
     }
@@ -88,7 +86,6 @@ public class PlayerService {
     }
     private Player buildPlayer(String[] line) {
         Player player = new Player();
-        player.setId(serviceId.generateSequence(Player.SEQUENCE_NAME));
         player.setName(line[0]);
         player.setAge(Integer.parseInt(line[1]));
         return player;
