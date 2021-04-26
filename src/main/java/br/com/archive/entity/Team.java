@@ -14,6 +14,9 @@ import java.util.List;
 @Getter
 @Setter
 @Document(collection = "team")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Team {
 
     @Transient
@@ -26,12 +29,11 @@ public class Team {
     private String name;
 
     @NotBlank(message = "tag is required")
-    @Size(min = 3, max = 3, message = "tag must be the size {max}")
+    @Size(min = 1, max = 3, message = "tag must be the size {max}")
     private String tag;
 
     //@NotNull(message = "statusType is required")
     private StatusType statusType;
 
     private List<Player> players;
-
 }

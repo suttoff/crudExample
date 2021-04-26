@@ -4,12 +4,12 @@ import br.com.archive.dao.PlayerDAO;
 import br.com.archive.entity.Player;
 import br.com.archive.repository.PlayerRepository;
 import com.univocity.parsers.fixed.FixedWidthParser;
+import io.vavr.control.Option;
 import io.vavr.control.Try;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
@@ -38,7 +38,7 @@ public class PlayerService {
     private final SequenceGeneratorService serviceId;
 
 
-    public List<Player> get(Long id) {
+    public List<Player> get(long id) {
         if (Objects.isNull(id)) {
             return this.repository.findAll();
         } else {
@@ -56,16 +56,15 @@ public class PlayerService {
         return "Player successfully included.";
     }
 
-    public String updateAge(Long id, Player player) {
+    public String updateAge(long id, Player player) {
         return this.playerDAO.updateAge(id, player);
     }
 
-    public void delete(Long id) {
+    public void delete(long id) {
         this.repository.deleteById(id);
     }
 
     public String receivedArchiveToCreate(MultipartFile file) throws IOException {
-
         InputStream inputStream;
         List<String[]> allRows = null;
         List<List<String[]>> list = new ArrayList<>();
@@ -79,6 +78,7 @@ public class PlayerService {
                     .onFailure(Exception::new)
                     .get();
             list.add(allRows);
+
         }
 
         if (allRows != null) {
@@ -86,7 +86,6 @@ public class PlayerService {
         }
         return "Player successfully included by archive.";
     }
-
     private Player buildPlayer(String[] line) {
         Player player = new Player();
         player.setId(serviceId.generateSequence(Player.SEQUENCE_NAME));

@@ -28,7 +28,7 @@ public class TeamService {
         return "Team successfully included.";
     }
 
-    public String addMember(Long idPlayer, Long idTeam) {
+    public String addMember(long idPlayer, long idTeam) {
         Optional<Player> player = this.playerRepository.findById(idPlayer);
         if (!player.isPresent()) {
             return "The informed player does not exist";
@@ -36,7 +36,7 @@ public class TeamService {
         return this.teamDAO.addMember(idTeam, player.get());
     }
 
-    public void delete(Long id) {
+    public void delete(long id) {
         this.repository.deleteById(id);
     }
 

@@ -29,19 +29,19 @@ public class TeamController {
     }
 
     @PostMapping(path = "/addMember/{idPlayer}/{idTeam}")
-    public String addMember(@PathVariable("idPlayer") Long idPlayer,
-                            @PathVariable("idTeam") Long idTeam) {
+    public String addMember(@PathVariable("idPlayer") long idPlayer,
+                            @PathVariable("idTeam") long idTeam) {
         return this.service.addMember(idPlayer, idTeam);
     }
 
     @GetMapping()
-    public List<Team> get(@RequestParam(required = false) Long id) {
+    public List<Team> get(@RequestParam(required = false) long id) {
         return this.service.get(id);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable long id) {
         this.service.delete(id);
     }
 }
