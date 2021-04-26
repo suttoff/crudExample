@@ -15,6 +15,9 @@ import javax.validation.constraints.NotNull;
 @Validated
 @NotNull(message = "player is required")
 @Document(collection = "player")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Player {
 
     @Transient
@@ -28,8 +31,4 @@ public class Player {
 
     @NotEmpty(message = "name is required")
     private int age;
-
-    public Player() {
-
-    }
 }

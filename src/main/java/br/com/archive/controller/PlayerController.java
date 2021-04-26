@@ -24,7 +24,7 @@ public class PlayerController {
     }
 
     @GetMapping
-    public List<Player> get(@RequestParam(required = false) Long id) {
+    public List<Player> get(@RequestParam(required = false) long id) {
         return this.service.get(id);
     }
 
@@ -36,13 +36,13 @@ public class PlayerController {
 
     @PutMapping("/{id}")
     public String updateAge(@RequestBody Player player,
-                            @PathVariable Long id) {
+                            @PathVariable long id) {
         return this.service.updateAge(id, player);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable long id) {
         this.service.delete(id);
     }
 
